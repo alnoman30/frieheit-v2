@@ -2,11 +2,11 @@
 
 
 @font-face {
-    font-family: 'Colitez Serif';
-    src: url('../fonts/ColitezSerif-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
+  font-family: 'Colitez Serif';
+  src: url('../fonts/ColitezSerif-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
 }
 
 
@@ -20,7 +20,7 @@
 
 
   --font-colitez: "Colitez Serif";
-  --font-archivo:  "Archivo", sans-serif;
+  --font-archivo: "Archivo", sans-serif;
 }
 
 
@@ -453,6 +453,7 @@ html.lenis body {
   left: 0;
   top: 0;
 }
+
 @media (max-width: 640px) {
   .btn-text-wrap {
     height: 20px;
@@ -463,46 +464,347 @@ html.lenis body {
 /* slider arrow */
 @media (max-width: 1024px) {
 
-    .reviews-arrows {
-        position: absolute;
-        bottom: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        z-index: 20;
-        pointer-events: none;
-    }
+  .reviews-arrows {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 20;
+    pointer-events: none;
+  }
 
-    .reviews-arrow {
-        position: static !important;
-        transform: none !important;
-        width: 42px;
-        height: 42px;
-        border-radius: 9999px;
-        background: #fff;
-        border: 1px solid #D9A327;
-        color: #D9A327;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: auto;
-        transition: all .3s ease;
-    }
+  .reviews-arrow {
+    position: static !important;
+    transform: none !important;
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 1px solid #D9A327;
+    color: #D9A327;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    transition: all .3s ease;
+  }
 
-    .reviews-arrow svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-    }
+  .reviews-arrow svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
 
-    .reviews-arrow:hover {
-        background: #D9A327;
-        border-color: #D9A327;
-        color: #fff;
-    }
+  .reviews-arrow:hover {
+    background: #D9A327;
+    border-color: #D9A327;
+    color: #fff;
+  }
+
+}
+
+
+/* footer */
+
+
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 60px;
+  position: relative;
+}
+
+
+/* LEFT */
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 40px;
+}
+
+
+.footer-logo {
+  margin-bottom: 25px;
+}
+
+
+.footer-logo img {
+  width: 148px;
+  object-fit: contain;
+}
+
+
+.footer-description {
+  color: #5C5853;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 130%;
+  max-width: 350px;
+  margin-bottom: 25px;
+}
+
+
+
+
+
+/* DIVIDER */
+
+.footer-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 41.66%;
+  width: 1px;
+  background: #C0B9AD;
+}
+
+
+
+/* RIGHT */
+
+.footer-right {
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+
+.footer-link-group h3,
+.contact-item h3 {
+
+  font-family: Colitez, serif;
+  font-style: italic;
+  color: #1F1B16;
+  font-size: 32px;
+  line-height: 110%;
+}
+
+
+.footer-link-group h3 {
+
+  border-bottom: 1px solid #C0B9AD;
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+
+}
+
+
+.footer-link-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.footer-link-group li {
+  margin-bottom: 10px;
+}
+
+
+.footer-link-group a,
+.contact-item a {
+
+  color: #5C5853;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 130%;
+  transition: .3s;
+
+}
+
+
+.footer-link-group a:hover,
+.contact-item a:hover {
+
+  color: #D9A327;
+
+}
+
+
+
+/* CONTACT */
+
+.footer-contact {
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+}
+
+
+.contact-item {
+
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+
+}
+
+
+.contact-icon {
+
+  width: 80px;
+  flex-shrink: 0;
+
+}
+
+
+.contact-icon img {
+
+  width: 100%;
+  height: auto;
+
+}
+
+
+.contact-item h3 {
+
+  margin-bottom: 8px;
+
+}
+
+
+.contact-item a {
+
+  font-weight: 700;
+
+}
+
+
+.copyright {
+
+  color: #5C5853;
+  font-size: 16px;
+  font-weight: 300;
+
+}
+
+
+.mobile-copy {
+  display: none;
+}
+
+
+
+/* RESPONSIVE */
+
+@media(max-width:991px) {
+
+  .footer-grid {
+
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+  }
+
+
+  .footer-divider {
+
+    display: none;
+
+  }
+
+
+  .footer-left {
+
+    padding-right: 0;
+
+  }
+
+
+  .footer-right {
+
+    padding-left: 0;
+
+  }
+
+
+  .desktop-copy {
+
+    display: none;
+
+  }
+
+
+  .mobile-copy {
+
+    display: block;
+    text-align: center;
+
+  }
+
+
+}
+
+
+
+@media(max-width:576px) {
+
+
+  .footer-section {
+
+    padding: 50px 0;
+
+  }
+
+
+  .footer-links {
+
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+
+  }
+
+
+  .footer-link-group h3,
+  .contact-item h3 {
+
+    font-size: 20px;
+
+  }
+
+
+  .contact-item {
+
+    gap: 15px;
+
+  }
+
+
+  .contact-icon {
+
+    width: 50px;
+
+  }
+
+
+  .footer-description {
+
+    font-size: 14px;
+
+  }
+
+  .contact-item a {
+    font-size: 14px;
+  }
+
+
 
 }

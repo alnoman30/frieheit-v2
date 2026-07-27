@@ -327,8 +327,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// search filter
+// audio search filter
 document.addEventListener("DOMContentLoaded", () => {
+
+  const audioLibrary = document.getElementById("audio-library");
+  if (!audioLibrary) return;
 
 
   const audioData = [
@@ -463,10 +466,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  const audioList = document.querySelector("#audioList");
-  const pagination = document.querySelector("#pagination");
-  const noResults = document.querySelector("#noResults");
-  const filters = document.querySelectorAll(".filter-btn");
+  const audioList = audioLibrary.querySelector("#audioList");
+  const pagination = audioLibrary.querySelector("#pagination");
+  const noResults = audioLibrary.querySelector("#noResults");
+  const filters = audioLibrary.querySelectorAll(".filter-btn");
 
 
   let activeFilter = "all";
@@ -878,5 +881,168 @@ d="M9 5l7 7-7 7"/>
 
   renderAudio();
 
+
+});
+
+
+// video search filter
+document.addEventListener("DOMContentLoaded", function () {
+
+  const section = document.querySelector("#video-course");
+
+  if (!section) return;
+
+  const filterButtons = section.querySelectorAll(".filter-btn");
+  const cards = section.querySelectorAll(".course-card");
+  const noResults = section.querySelector("#no-results");
+
+
+  if (!filterButtons.length || !cards.length) return;
+
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+      const filter = this.dataset.filter;
+      let visibleCount = 0;
+
+
+      // Update active tab style
+      filterButtons.forEach(btn => {
+        btn.classList.remove(
+          "bg-gold",
+          "text-[#1F1B16]"
+        );
+
+        btn.classList.add(
+          "bg-[#1F1B16]",
+          "text-white"
+        );
+      });
+
+
+      this.classList.remove(
+        "bg-[#1F1B16]",
+        "text-white"
+      );
+
+      this.classList.add(
+        "bg-gold",
+        "text-[#1F1B16]"
+      );
+
+
+      // Filter course cards
+      cards.forEach(card => {
+
+        const categories = card.dataset.category
+          ? card.dataset.category.split(" ")
+          : [];
+
+
+        if (
+          filter === "all" ||
+          categories.includes(filter)
+        ) {
+
+          card.classList.remove("hidden");
+          visibleCount++;
+
+        } else {
+
+          card.classList.add("hidden");
+
+        }
+
+      });
+
+
+      // Show / hide no result message
+      if (noResults) {
+
+        if (visibleCount === 0) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+        }
+
+      }
+
+    });
+
+  });
+
+
+});
+
+// magnet svg animation 
+document.querySelectorAll(".magnet-item").forEach((item) => {
+  const icon = item.querySelector(".magnet-item-svg");
+  let bounds;
+
+  item.addEventListener("mouseenter", () => {
+    bounds = item.getBoundingClientRect();
+  });
+
+  item.addEventListener("mousemove", (e) => {
+    if (!bounds || !icon) return;
+
+    const x = e.clientX - bounds.left - bounds.width / 2;
+    const y = e.clientY - bounds.top - bounds.height / 2;
+
+    gsap.to(icon, {
+      x: x * 0.08,
+      y: y * 0.08,
+      duration: 1.2,
+      ease: "power2.out"
+    });
+  });
+
+  item.addEventListener("mouseleave", () => {
+    gsap.to(icon, {
+      x: 0,
+      y: 0,
+      duration: 1.4,
+      ease: "elastic.out(1, 0.3)"
+    });
+  });
+});
+
+
+// FAQ js
+document.querySelectorAll(".faq-question").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const item = button.closest(".faq-item");
+    const answer = item.querySelector(".faq-answer");
+    const icon = item.querySelector(".faq-icon");
+
+
+    document.querySelectorAll(".faq-answer").forEach(otherAnswer => {
+      if(otherAnswer !== answer){
+        otherAnswer.style.maxHeight = null;
+        otherAnswer.closest(".faq-item")
+          .querySelector(".faq-icon")
+          .classList.remove("rotate-45");
+      }
+    });
+
+
+    if(answer.style.maxHeight){
+
+      answer.style.maxHeight = null;
+      icon.classList.remove("rotate-45");
+
+    } else {
+
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      icon.classList.add("rotate-45");
+
+    }
+
+
+  });
 
 });
